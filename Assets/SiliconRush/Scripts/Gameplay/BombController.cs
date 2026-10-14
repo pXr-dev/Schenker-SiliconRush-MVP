@@ -66,12 +66,27 @@ public class BombController : MonoBehaviour
             Instantiate(explosionEffectPrefab, pos, Quaternion.identity);
         }
 
-        Collider2D hitCollider = Physics2D.OverlapPoint(pos);
+        Collider2D hitCollider = Physics2D.OverlapCircle(pos, 0.4f);
 
         if (hitCollider != null)
         {
-            Debug.Log("Explosion traf: " + hitCollider.name);
+            Debug.Log("GEFUNDEN: " + hitCollider.name + " | Tag: " + hitCollider.tag);
+
+            if (hitCollider.CompareTag("DestructibleWall"))
+            {
+                Destroy(hitCollider.gameObject);
+                return true;
+            }
+
+            if (hitCollider.CompareTag("Player"))
+            {
+                // Später: Schaden / Leben abziehen
+            }
         }
+        else
+        {
+            Debug.Log("Nicht gefunden bei Position: " + pos);
+        }            
 
         return false;
     }

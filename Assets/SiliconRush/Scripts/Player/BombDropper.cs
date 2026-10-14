@@ -17,29 +17,29 @@ public class BombDropper : MonoBehaviour
 
     private void DropBomb()
     {
-        Vector2 currentPos = transform.position;
-        Vector3 snapPosition = new Vector3(
-            Mathf.Round(currentPos.x),
-            Mathf.Round(currentPos.y),
-            0f
+        if (bombPrefab == null)
+        {
+            Debug.LogWarning("Kein Bomb Prefab im Inspector von BombDropper");
+            return;
+        }
+
+        // 1. Position auf das Raster runden
+        Vector2 spawnPos = new Vector2(
+            Mathf.Round(transform.position.x),
+            Mathf.Round(transform.position.y)
         );
 
-        if (bombPrefab != null)
+        // 2. Bombe genau einmal an der gerundeten Position erzeugen
+        GameObject spawnedBomb = Instantiate(bombPrefab, spawnPos, Quaternion.identity);
+        
+        // 3. Spieler-Referenz übergeben
+        BombController controller = spawnedBomb.GetComponent<BombController>();
+        if (controller != null)
         {
-            GameObject bomb = Instantiate(bombPrefab, snapPosition, Quaternion.identity);
+            controller.SetPlayerReference(this);
+        }
 
-            BombController controller = bomb.GetComponent<BombController>();
-            if (controller != null)
-            {
-                controller.SetPlayerReference(this);
-            }
-                      
-            currentBombCount++;
-        }
-        else
-        {
-            Debug.LogWarning("Kein Bomb Prefab im Inspector von BombDropper zugewiesen!");
-        }
+        currentBombCount++;
     }
 
     public void OnBombExploded()
