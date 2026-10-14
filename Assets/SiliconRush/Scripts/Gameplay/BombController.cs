@@ -4,10 +4,12 @@ using Unity.VisualScripting;
 
 public class BombController : MonoBehaviour
 {
-    [Header("Bomb Timing")]
+    [Header("Bomb Timing & Range")]
     [SerializeField] private float fuseTime = 2.5f;
     [SerializeField] private int explosionRange = 2;
 
+    [Header("Visual Effects")]
+    [SerializeField] private GameObject explosionEffectPrefab;
     private BombDropper playerBombDropper;
 
     public void SetPlayerReference(BombDropper dropper)
@@ -59,6 +61,11 @@ public class BombController : MonoBehaviour
 
     private bool ProcessExplosionAtPosition(Vector2 pos)
     {
+        if (explosionEffectPrefab != null)
+        {
+            Instantiate(explosionEffectPrefab, pos, Quaternion.identity);
+        }
+
         Collider2D hitCollider = Physics2D.OverlapPoint(pos);
 
         if (hitCollider != null)
