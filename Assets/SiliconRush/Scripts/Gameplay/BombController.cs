@@ -61,31 +61,29 @@ public class BombController : MonoBehaviour
 
     private bool ProcessExplosionAtPosition(Vector2 pos)
     {
-        // 1. Visuellen Effekt instanziieren
         if (explosionEffectPrefab != null)
         {
             Instantiate(explosionEffectPrefab, pos, Quaternion.identity);
         }
 
-        // 2. Kollisionsprüfung mit Radius
-        Collider2D hitCollider = Physics2D.OverlapCircle(pos, 0.4f);
+        Collider2D hitCollider = Physics2D.OverlapCircle(pos, 0.3f);
 
         if (hitCollider != null)
         {
-            // Prüfen, ob es eine zerstörbare Wand ist
             if (hitCollider.CompareTag("DestructibleWall"))
             {
+                Debug.Log("Zerstörbare Wand getroffen und zerstört!");
                 Destroy(hitCollider.gameObject);
-                return true; // Welle stoppen!
+                return true;
             }
 
-            // Falls es der Spieler ist
             if (hitCollider.CompareTag("Player"))
             {
-                // Später: Schaden / Leben abziehen
+                Debug.Log("Captain XMG wurde getroffen!");
+                return true;
             }
         }
 
-        return false; // Welle breitet sich weiter aus
+        return false;
     }
 }
