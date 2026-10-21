@@ -80,6 +80,13 @@ public class BombController : MonoBehaviour
             if (hitCollider.CompareTag("Player"))
             {
                 Debug.Log("Captain XMG wurde getroffen!");
+
+                PlayerHealth playerHealth = hitCollider.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage();
+                }
+                
                 return true;
             }
         }
