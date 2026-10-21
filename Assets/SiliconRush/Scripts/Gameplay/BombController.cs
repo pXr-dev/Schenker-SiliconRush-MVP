@@ -86,6 +86,13 @@ public class BombController : MonoBehaviour
                 return true;
             }
 
+            if (hitCollider.CompareTag("Enemy"))
+            {
+                Debug.Log("Gegner wurde durch Explosion vernichtet!");
+                Destroy(hitCollider.gameObject);
+                return true;
+            }
+
             if (hitCollider.CompareTag("Player"))
             {
                 Debug.Log("Captain XMG wurde getroffen!");
