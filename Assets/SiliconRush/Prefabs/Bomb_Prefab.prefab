@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1649812642084573855}
   - component: {fileID: 6894583972852620772}
   - component: {fileID: -7220023808339598876}
-  - component: {fileID: 8733933444262191047}
   m_Layer: 0
   m_Name: Bomb_Prefab
   m_TagString: Untagged
@@ -114,21 +113,7 @@ MonoBehaviour:
   fuseTime: 2.5
   explosionRange: 2
   explosionEffectPrefab: {fileID: 0}
---- !u!114 &8733933444262191047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570419596775042895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570b8b112d5c3064ca12fcdb8e333087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BombController
-  fuseTime: 2.5
-  explosionRange: 2
-  explosionEffectPrefab: {fileID: 273294129115948280, guid: 62ca4874834d1274e832b9cc6292b073, type: 3}
+  explosionSound: {fileID: 8300000, guid: 08bf7d5be971f304ab26bec0deaa9ce8, type: 3}
 --- !u!1 &2548002024088210953
 GameObject:
   m_ObjectHideFlags: 0

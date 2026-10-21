@@ -6,6 +6,9 @@ public class BombDropper : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private int maxBombs = 1;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip dropSound; 
+
     private int currentBombCount = 0;
     private void Update()
     {
@@ -37,6 +40,11 @@ public class BombDropper : MonoBehaviour
         if (controller != null)
         {
             controller.SetPlayerReference(this);
+        }
+
+        if (dropSound != null)
+        {
+            AudioSource.PlayClipAtPoint(dropSound, transform.position);
         }
 
         currentBombCount++;

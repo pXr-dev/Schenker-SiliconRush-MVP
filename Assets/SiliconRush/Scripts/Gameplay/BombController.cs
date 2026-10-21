@@ -10,6 +10,10 @@ public class BombController : MonoBehaviour
 
     [Header("Visual Effects")]
     [SerializeField] private GameObject explosionEffectPrefab;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip explosionSound;
+    
     private BombDropper playerBombDropper;
 
     public void SetPlayerReference(BombDropper dropper)
@@ -31,6 +35,11 @@ public class BombController : MonoBehaviour
     private void Explode()
     {
         Debug.Log("BOOM! Kühl-Bombe detoniert!");
+
+        if (explosionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+        }
 
         Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 

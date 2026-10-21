@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 561391435}
   - component: {fileID: 561391437}
   - component: {fileID: 561391438}
+  - component: {fileID: 561391439}
   m_Layer: 6
   m_Name: CaptainXMG_Placeholder
   m_TagString: Player
@@ -691,6 +692,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BombDropper
   bombPrefab: {fileID: 570419596775042895, guid: e1d05ec99acb89d46b0922326837576d, type: 3}
   maxBombs: 1
+  dropSound: {fileID: 8300000, guid: 93ac7bb5dd20d0745a74fffe2f662fa8, type: 3}
+--- !u!114 &561391439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561391432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5213a528d37f8d9439c94a8f36b36acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxLives: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,11 +939,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6903268619552629356, guid: d522f85e7b9d02942aa3803297d1e712, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6903268619552629356, guid: d522f85e7b9d02942aa3803297d1e712, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6903268619552629356, guid: d522f85e7b9d02942aa3803297d1e712, type: 3}
       propertyPath: m_LocalPosition.z
