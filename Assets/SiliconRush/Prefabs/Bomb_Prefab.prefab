@@ -114,6 +114,8 @@ MonoBehaviour:
   explosionRange: 2
   explosionEffectPrefab: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 08bf7d5be971f304ab26bec0deaa9ce8, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 08bf7d5be971f304ab26bec0deaa9ce8, type: 3}
+  enemySoundDelay: 10
 --- !u!1 &2548002024088210953
 GameObject:
   m_ObjectHideFlags: 0
