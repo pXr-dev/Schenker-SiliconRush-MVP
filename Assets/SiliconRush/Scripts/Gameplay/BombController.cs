@@ -13,6 +13,8 @@ public class BombController : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip explosionSound;
+    [SerializeField] private AudioClip enemyDeathSound;
+    [SerializeField] private float enemySoundDelay = 0.3f;
     
     private BombDropper playerBombDropper;
 
@@ -89,6 +91,12 @@ public class BombController : MonoBehaviour
             if (hitCollider.CompareTag("Enemy"))
             {
                 Debug.Log("Gegner wurde durch Explosion vernichtet!");
+
+                if (enemyDeathSound != null)
+                {
+                    StartCoroutine(PlayDelayedSound(enemyDeathSound, pos, 0.15f));
+                }
+
                 Destroy(hitCollider.gameObject);
                 return true;
             }
@@ -108,5 +116,11 @@ public class BombController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator PlayDelayedSound(AudioClip clip, Vector2 pos, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioSource.PlayClipAtPoint(clip, pos);
     }
 }
